@@ -11,8 +11,14 @@
 </head>
 
 <body>
-    <div class="container" >
+    <div class="container">
+        <div class="row">
+            <h1 class="title">My Github Portfolio</h1>
+        </div>
+    </div>
+    <div class="container">
         <div class="row mb-3">
+
             <div class=" col-sm-5 bg-light">
                 <div id="headshot" class="ab mt-3 mb-3">
                     <img id="profilepic" alt="Profile pic" class="rounded-circle">
@@ -44,35 +50,33 @@
                         href="https://twitter.com/NabinAd53617101?ref_src=twsrc%5Etfw">Tweets by NabinAd53617101</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
-
+            </div>
+            <div class="col-sm bg-light ">
                 <div class="work mt-5">
                     <h4 class="text-center bac text-light">
                         <a href="#"><i class="fas fa-building"></i></a>
-                        WORK EXPERIENCE</h4>
-                        <table class="abc">
-                            <thead>
-                              <tr>
+                        My Projects Repository</h4>
+                    <table class="repodata">
+                        <thead>
+                            <tr>
                                 <th>ID</th>
                                 <th>Repo Name</th>
                                 <th>Owner</th>
-                              </tr>
-                            </thead>
-                            <tbody id="datas">
-                            </tbody>
-                            <tfoot>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Repo Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="datas">
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Repo Name</th>
                                 <th>Owner</th>
-                              </tr>
-                            </tfoot>
-                          </table>
+                            </tr>
+                        </tfoot>
+                    </table>
 
                 </div>
             </div>
-            <div class="alert alert-primary" role="alert">
-                A simple primary alert—check it out!
-              </div>
             <script>
                 fetch("https://api.github.com/users/nabeen11")
                     .then(response => response.json())
@@ -96,24 +100,24 @@
                         // document.getElementById('loading').hidden = true
                     })
             </script>
-<script>
-    fetch("https://api.github.com/users/nabeen11/repos")
-    .then(response => response.json())
-    .then(function(data){
-        console.log(data);
-        if(data.length > 0){
-            var temp = "";
+            <script>
+                fetch("https://api.github.com/users/nabeen11/repos")
+                    .then(response => response.json())
+                    .then(function (data) {
+                        console.log(data);
+                        if (data.length > 0) {
+                            var temp = "";
 
-            data.forEach((repo)=>{
-                temp +="<tr>";
-                temp +="<td>"+repo.id+"</td>";
-                temp +="<td>"+repo.name+"</td>";
-                temp +="<td>"+repo.owner.login+"</td>";
-            })
-            document.getElementById("datas").innerHTML = temp;
-        }
-    })
-</script>
+                            data.forEach((repo) => {
+                                temp += "<tr>";
+                                temp += "<td>" + repo.id + "</td>";
+                                temp += "<td>" + repo.name + "</td>";
+                                temp += "<td>" + repo.owner.login + "</td>";
+                            })
+                            document.getElementById("datas").innerHTML = temp;
+                        }
+                    })
+            </script>
 
 
 

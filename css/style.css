@@ -6,8 +6,12 @@ body{
 	max-width: 800px;
 	margin: auto;
 	margin-top: 20px;
-    background: white;
+  background: white;
     
+}
+.title{
+  text-align: center;
+  color: black;
 }
 
 #headshot {
@@ -29,3 +33,10 @@ body{
 .bac{
     background: dimgray;
 }
+  table, th, td {
+    height: 50px;
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+  }
