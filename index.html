@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>My CV</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+</head>
+
+<body>
+    <div class="container" >
+        <div class="row mb-3">
+            <div class=" col-sm-5 bg-light">
+                <div id="headshot" class="ab mt-3 mb-3">
+                    <img id="profilepic" alt="Profile pic" class="rounded-circle">
+                </div>
+                <div class="name">
+                    <h4 id="fullname" class="text-center font-weight-bold "></h4>
+                    <p id="bioo" class="details">
+                    </p>
+
+                </div>
+                <div class="contact mt-2">
+                    <h4 class="text-center bac text-light">
+                        <a href="#"><i class="far fa-address-card"></i></a>
+                        CONTACT</h4>
+
+                    <!-- <a href="#"><i class="far fa-envelope"></i></a>&nbsp nabin.1196@gmail.com</br> -->
+                    <i class="fas fa-phone"></i>&nbsp<a id="followersss"></a></br>
+                    <i class="fas fa-map-marker-alt"></i>&nbsp<a id="addresss"></a></br>
+                    <a href="https://twitter.com/NabinAd53617101"><i class="fab fa-twitter-square"></i></a>
+                </div>
+            </div>
+
+            <div class="col-sm-7 bg-light ">
+                <div class="education mt-5">
+                    <h4 class="text-center bac text-light">
+                        <a href="#"><i class="fas fa-graduation-cap"></i></a>
+                        Twitter</h4>
+                    <a class="twitter-timeline" data-width="500" data-height="400" data-theme="light"
+                        href="https://twitter.com/NabinAd53617101?ref_src=twsrc%5Etfw">Tweets by NabinAd53617101</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <div class="work mt-5">
+                    <h4 class="text-center bac text-light">
+                        <a href="#"><i class="fas fa-building"></i></a>
+                        WORK EXPERIENCE</h4>
+                        <table class="abc">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Repo Name</th>
+                                <th>Owner</th>
+                              </tr>
+                            </thead>
+                            <tbody id="datas">
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Repo Name</th>
+                                <th>Owner</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+
+                </div>
+            </div>
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert—check it out!
+              </div>
+            <script>
+                fetch("https://api.github.com/users/nabeen11")
+                    .then(response => response.json())
+                    .then(function (data) {
+                        console.log(data)
+
+                        let followerscount = data['followers']
+                        let followersinfo = `My valuable followers are ${followerscount} in number`
+
+                        let repocount = data['public_repos']
+                        let repoinfo = `My Total repo are ${repocount} in number`
+                        document.getElementById('profilepic').src = data['avatar_url']
+                        document.getElementById('fullname').textContent = data['name']
+                        document.getElementById('bioo').textContent = data['bio']
+                        document.getElementById('addresss').textContent = data['location']
+                        document.getElementById('followersss').textContent = followersinfo
+                        document.getElementById('urll').href = data['html_url']
+                        document.getElementById('repourll').href = data['repos_url']
+                        document.getElementById('totalrepos').textContent = repoinfo
+                        // document.getElementById('maincont').hidden = false
+                        // document.getElementById('loading').hidden = true
+                    })
+            </script>
+<script>
+    fetch("https://api.github.com/users/nabeen11/repos")
+    .then(response => response.json())
+    .then(function(data){
+        console.log(data);
+        if(data.length > 0){
+            var temp = "";
+
+            data.forEach((repo)=>{
+                temp +="<tr>";
+                temp +="<td>"+repo.id+"</td>";
+                temp +="<td>"+repo.name+"</td>";
+                temp +="<td>"+repo.owner.login+"</td>";
+            })
+            document.getElementById("datas").innerHTML = temp;
+        }
+    })
+</script>
+
+
+
+
+
+
+
+            <script type="text/javascript" src="adminpanel/asset/js/jquery-3.3.1.slim.min.js"></script>
+            <script type="text/javascript" src="adminpanel/asset/js/popper.min.js"></script>
+            <script type="text/javascript" src="adminpanel/asset/js/bootstrap.min.js"></script>
+</body>
+
+</html>
